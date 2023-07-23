@@ -81,7 +81,7 @@ Copy
 
 ```jsx
 import React from "react";
-import TurboSelect from "@your-namespace/turbo-select";
+import TurboSelect from "react-turbo-select";
 
 const options = [
   { value: "1", label: "Option 1" },
