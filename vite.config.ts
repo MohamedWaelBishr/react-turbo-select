@@ -1,9 +1,11 @@
 import path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import dts from 'vite-plugin-dts'
 
 export default defineConfig({
   build: {
+    cssCodeSplit : true,
     lib: {
       entry: path.resolve(__dirname, "src/react-turbo-select/index.tsx"),
       name: "React Turbo Select",
@@ -18,5 +20,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [react()],
+  plugins: [react(),dts()],
 });
