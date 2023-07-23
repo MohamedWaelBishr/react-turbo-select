@@ -1,0 +1,15 @@
+export const CLASS_NAMES = {
+  CONTROLS_CONTAINER: "react-turbo-select__controls-container",
+  DROP_DOWN_ICON: "react-turbo-select__drop-down-icon",
+  REMOVE_ICON: "react-turbo-select__remove-icon",
+  MENU: "react-turbo-select__menu",
+  MENU_OPEN: "react-turbo-select__menu--open",
+  MENU_CLOSE: "react-turbo-select__menu--close",
+  OPTION: "react-turbo-select__option",
+  OPTION_SELECTED: "react-turbo-select__option--selected",
+  OPTION_SELECTED_DARK: "react-turbo-select__option--selected-dark",
+  INPUT: "react-turbo-select__input",
+  MULTIPLE_MENU: "react-turbo-select__menu--multiple",
+  TAG: "react-turbo-select__tag",
+  REMOVE_TAG_ICON: "react-turbo-select__remove-tag-icon",
+};

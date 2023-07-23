@@ -1,0 +1,92 @@
+{
+  "name": "react-turbo-select",
+  "version": "0.0.0",
+  "description": "Turbo Select is a flexible and feature-rich React component that provides a convenient dropdown select menu for your applications. Whether you need a simple single selection or a more complex multiple selection with tags, Turbo Select has got you covered. It offers various customization options, making it suitable for a wide range of use cases.",
+  "license": "MIT",
+  "author": "Mohamed Wael Bishr",
+  "keywords": [
+    "TurboSelect",
+    "React",
+    "component",
+    "dropdown",
+    "select",
+    "menu",
+    "single selection",
+    "multiple selection",
+    "tags",
+    "customization",
+    "use cases",
+    "flexible",
+    "feature-rich",
+    "convenient",
+    "options",
+    "array",
+    "TypeScript",
+    "keywords",
+    "wide range"
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "type": "module",
+  "main": "./dist/react-turbo-select.umd.js",
+  "module": "./dist/react-turbo-select.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/react-turbo-select.es.js",
+      "require": "./dist/react-turbo-select.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "@vitejs/plugin-react": "^4.0.1",
+    "eslint": "^8.44.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "es2020": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  }
+}
