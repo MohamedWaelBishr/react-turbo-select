@@ -7,7 +7,7 @@ Turbo Select is a flexible and feature-rich React component that provides a conv
 To install Turbo Select in your React project, you can use npm or yarn:
 
 ```bash
-npm install @your-namespace/turbo-select
+npm install react-turbo-select
 ```
 
 or
@@ -15,7 +15,7 @@ or
 Copy
 
 ```bash
-yarn add @your-namespace/turbo-select
+yarn add react-turbo-select
 ```
 
 ## ⚙️ Props
