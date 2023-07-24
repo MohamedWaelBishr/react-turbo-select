@@ -1,49 +1,46 @@
-import react from "@vitejs/plugin-react";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
-import { defineConfig, UserConfigExport } from "vite";
-import dts from "vite-plugin-dts";
+import react from '@vitejs/plugin-react'
+import { readFile } from 'node:fs/promises'
+import path from 'node:path'
+import { defineConfig, UserConfigExport } from 'vite'
+import dts from 'vite-plugin-dts'
+import tsConfigPaths from 'vite-tsconfig-paths'
+import EsLint from 'vite-plugin-linter'
+const { EsLinter, linterPlugin } = EsLint
 
-const App = async (): Promise<UserConfigExport> => {
-  let name: string = "";
-
-  const data: string = await readFile(
-    path.join(__dirname, "src", "react-turbo-select", "index.tsx"),
-    { encoding: "utf-8" }
-  );
-
-  const s = data.split("\n");
-
-  for (let x of s.reverse())
-    if (x.includes("export default"))
-      name = x.replace("export default ", "").replace(" ", "");
-
+const App = async (configEnv): Promise<UserConfigExport> => {
   return defineConfig({
     plugins: [
+      tsConfigPaths(),
+      linterPlugin({
+        include: ['./src}/**/*.{ts,tsx}'],
+        linters: [new EsLinter({ configEnv })],
+      }),
       react(),
       dts({
         insertTypesEntry: true,
+        copyDtsFiles: true,
+        include: ['src/react-turbo-select'],
       }),
     ],
     build: {
       lib: {
-        entry: path.resolve(__dirname, "src/react-turbo-select/index.tsx"),
-        name,
-        formats: ["es", "umd"],
+        entry: path.resolve(__dirname, 'src/react-turbo-select/index.tsx'),
+        name: 'react-turbo-select',
+        formats: ['es', 'umd'],
         fileName: (format) => `react-turbo-select.${format}.js`,
       },
       rollupOptions: {
-        external: ["react", "react-dom", "styled-components"],
+        external: ['react', 'react-dom', 'styled-components'],
         output: {
           globals: {
-            react: "React",
-            "react-dom": "ReactDOM",
-            "styled-components": "styled",
+            react: 'React',
+            'react-dom': 'ReactDOM',
+            'styled-components': 'styled',
           },
         },
       },
     },
-  });
-};
+  })
+}
 
-export default App;
+export default App

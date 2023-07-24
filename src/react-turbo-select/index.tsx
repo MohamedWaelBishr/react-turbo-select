@@ -1,4 +1,7 @@
-import React, { LegacyRef, useEffect, useRef, useState } from "react";
+import './styles.css'
+
+import React, { LegacyRef, useEffect, useRef, useState } from 'react'
+
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -6,17 +9,14 @@ import {
   InputControl,
   RemoveIcon,
   TagControls,
-} from "./components";
-import "./styles.css";
-import { CLASS_NAMES } from "./utils/classNames";
-import { getBorderRadius } from "./utils/getBorderRadius";
-import { handleKeyDown } from "./utils/handleKeyDown";
-import { handleScroll } from "./utils/handleScroll";
-import { Option, TurboSelectProps } from "./utils/types";
+} from './components'
+import { Option,TurboSelectProps } from './types/types'
+import { CLASS_NAMES } from './utils/classNames'
+import { getBorderRadius } from './utils/getBorderRadius'
+import { handleKeyDown } from './utils/handleKeyDown'
+import { handleScroll } from './utils/handleScroll'
 
-import "./styles.css";
-
-const TurboSelect: React.FC<TurboSelectProps> = ({
+export const TurboSelect: React.FC<TurboSelectProps> = ({
   isSearchable = true,
   isLoading = false,
   isClearable = true,
@@ -51,125 +51,115 @@ const TurboSelect: React.FC<TurboSelectProps> = ({
   height = 40,
   menuHeight = 250,
   iconFlicker = false,
-  borderRadius = "tiny",
+  borderRadius = 'tiny',
   gapBetweenControls = 10,
   tagStyle,
-  mode = "light",
+  mode = 'light',
 }) => {
   const [selectedOptions, setSelectedOptions] = useState<Option[]>(
-    defaultValue ? [defaultValue] : []
-  );
-  const [inputValue, setInputValue] = useState<string>("");
-  const [localOptions, setLocalOptions] = useState<Option[]>(options);
-  const [isMenuOpen, setMenuOpen] = useState<boolean>(menuOpen);
+    defaultValue ? [defaultValue] : [],
+  )
+  const [inputValue, setInputValue] = useState<string>('')
+  const [localOptions, setLocalOptions] = useState<Option[]>(options)
+  const [isMenuOpen, setMenuOpen] = useState<boolean>(menuOpen)
   const [defaultPlaceholder, setDefaultPlaceHolder] = useState<string>(
-    placeholder ?? "Select an option"
-  );
-  const containerRef: LegacyRef<any> = useRef<any>(null);
-  const inputRef: LegacyRef<any> = useRef<any>(null);
-  const menuRef: LegacyRef<any> = useRef<any>(null);
+    placeholder ?? 'Select an option',
+  )
+  const containerRef: LegacyRef<any> = useRef<any>(null)
+  const inputRef: LegacyRef<any> = useRef<any>(null)
+  const menuRef: LegacyRef<any> = useRef<any>(null)
 
   useEffect(() => {
     // Check the width prop when the component mounts
     if (width && width < 300) {
-      throw new Error(
-        'Invalid prop "width" supplied to TurboSelect. Minimum width should be 300.'
-      );
+      throw new Error('Invalid prop "width" supplied to TurboSelect. Minimum width should be 300.')
     }
-  }, [width]);
+  }, [width])
 
   const handleMenuOpen = () => {
-    setMenuOpen(true);
-    inputRef?.current?.focus();
+    setMenuOpen(true)
+    inputRef?.current?.focus()
     if (onMenuOpen) {
-      onMenuOpen();
+      onMenuOpen()
     }
-  };
+  }
 
   const handleMenuClose = () => {
-    setMenuOpen(false);
+    setMenuOpen(false)
     if (onMenuClose) {
-      onMenuClose();
+      onMenuClose()
     }
-  };
+  }
 
   useEffect(() => {
     if (getMenuRef) {
-      getMenuRef(menuRef);
+      getMenuRef(menuRef)
     }
     if (getContainerRef) {
-      getContainerRef(containerRef);
+      getContainerRef(containerRef)
     }
     if (getInputRef) {
-      getInputRef(inputRef);
+      getInputRef(inputRef)
     }
-  }, [containerRef.current, inputRef.current, menuRef.current]);
+  }, [containerRef.current, inputRef.current, menuRef.current])
 
   const handleOptionChange = (option: Option | null) => {
-    setLocalOptions(options);
+    setLocalOptions(options)
     if (option) {
       if (isMultiple) {
         let selectedOptionsIds = selectedOptions.map((selectedOption) => {
-          return selectedOption.value;
-        });
+          return selectedOption.value
+        })
 
         const updatedOptions = selectedOptionsIds.includes(option.value)
-          ? selectedOptions.filter(
-              (selectedOption) => selectedOption.value !== option.value
-            )
-          : [...selectedOptions, option];
-        setSelectedOptions(updatedOptions);
-        setInputValue("");
+          ? selectedOptions.filter((selectedOption) => selectedOption.value !== option.value)
+          : [...selectedOptions, option]
+        setSelectedOptions(updatedOptions)
+        setInputValue('')
         setDefaultPlaceHolder(
-          updatedOptions.length
-            ? "Multiple Values Selected ...."
-            : "Select an option"
-        );
+          updatedOptions.length ? 'Multiple Values Selected ....' : 'Select an option',
+        )
       } else {
-        setSelectedOptions([option]);
-        setInputValue(option.label);
+        setSelectedOptions([option])
+        setInputValue(option.label)
       }
     } else {
-      setSelectedOptions([]);
-      setInputValue("");
+      setSelectedOptions([])
+      setInputValue('')
     }
     if (onChange) {
-      onChange(option);
+      onChange(option)
     }
     if (closeOnSelect) {
-      handleMenuClose();
+      handleMenuClose()
     }
-  };
+  }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (isSearchable) {
       setLocalOptions(
         options.filter((option) =>
-          option.label.toLowerCase().includes(event.target.value.toLowerCase())
-        )
-      );
+          option.label.toLowerCase().includes(event.target.value.toLowerCase()),
+        ),
+      )
     }
-    setInputValue(event.target.value);
-  };
+    setInputValue(event.target.value)
+  }
 
   //   Handler for clicking outside the dropdown menu to close it (optional)
   const handleOutsideClick = (event: MouseEvent) => {
-    if (
-      menuRef &&
-      menuRef.current &&
-      !menuRef.current.contains(event.target as Node)
-    ) {
+    if (menuRef && menuRef.current && !menuRef.current.contains(event.target as Node)) {
       if (isMultiple) {
-        setInputValue("");
-        setLocalOptions(options);
+        setInputValue('')
+        setLocalOptions(options)
       }
-      handleMenuClose();
+      handleMenuClose()
     }
-  };
+  }
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
-    document.addEventListener("keydown", (e) => {
+    document.addEventListener('mousedown', handleOutsideClick)
+    document.addEventListener('keydown', (e) => {
       handleKeyDown(
         e,
         escapeCloseMenu,
@@ -178,12 +168,12 @@ const TurboSelect: React.FC<TurboSelectProps> = ({
         setLocalOptions,
         options,
         handleMenuClose,
-        isMenuOpen
-      );
-    });
+        isMenuOpen,
+      )
+    })
 
     return () => {
-      document.removeEventListener("keydown", (e) => {
+      document.removeEventListener('keydown', (e) => {
         handleKeyDown(
           e,
           escapeCloseMenu,
@@ -192,16 +182,16 @@ const TurboSelect: React.FC<TurboSelectProps> = ({
           setLocalOptions,
           options,
           handleMenuClose,
-          isMenuOpen
-        );
-      });
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, []);
+          isMenuOpen,
+        )
+      })
+      document.removeEventListener('mousedown', handleOutsideClick)
+    }
+  }, [])
 
   return (
     <div
-      dir={isRtl ? "rtl" : "ltr"}
+      dir={isRtl ? 'rtl' : 'ltr'}
       onClick={() => (openMenuOnClick ? setMenuOpen(!isMenuOpen) : null)}
     >
       <div
@@ -211,22 +201,19 @@ const TurboSelect: React.FC<TurboSelectProps> = ({
           isMenuOpen
             ? {
                 borderRadius:
-                  getBorderRadius(borderRadius) +
-                  "px" +
-                  getBorderRadius(borderRadius) +
-                  "px 0 0 ",
+                  getBorderRadius(borderRadius) + 'px' + getBorderRadius(borderRadius) + 'px 0 0 ',
                 width: width + 10,
                 height: height,
-                backgroundColor: mode === "dark" ? "#333" : "#fff",
-                color: mode === "dark" ? "#fff" : "#333",
+                backgroundColor: mode === 'dark' ? '#333' : '#fff',
+                color: mode === 'dark' ? '#fff' : '#333',
                 ...containerStyles,
               }
             : {
                 borderRadius: getBorderRadius(borderRadius),
                 width: width + 10,
                 height: height,
-                backgroundColor: mode === "dark" ? "#333" : "#fff",
-                color: mode === "dark" ? "#fff" : "#333",
+                backgroundColor: mode === 'dark' ? '#333' : '#fff',
+                color: mode === 'dark' ? '#fff' : '#333',
                 ...containerStyles,
               }
         }
@@ -259,16 +246,10 @@ const TurboSelect: React.FC<TurboSelectProps> = ({
           />
         )}
         {!dropDownIcon && !isMenuOpen && (
-          <ArrowDownIcon
-            handleMenuOpen={handleMenuOpen}
-            iconFlicker={iconFlicker}
-          />
+          <ArrowDownIcon handleMenuOpen={handleMenuOpen} iconFlicker={iconFlicker} />
         )}
         {!dropDownIcon && isMenuOpen && (
-          <ArrowUpIcon
-            handleMenuOpen={handleMenuOpen}
-            iconFlicker={iconFlicker}
-          />
+          <ArrowUpIcon handleMenuOpen={handleMenuOpen} iconFlicker={iconFlicker} />
         )}
       </div>
       {isMultiple && showTagsControls && selectedOptions.length !== 0 && (
@@ -304,7 +285,5 @@ const TurboSelect: React.FC<TurboSelectProps> = ({
         />
       )}
     </div>
-  );
-};
-
-export default TurboSelect;
+  )
+}

@@ -1,29 +1,29 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "skipLibCheck": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "node_modules/react-turbo-select/dist"
-    ],
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
     "declaration": true,
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "declarationMap": true,
+    "baseUrl": ".",
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "react-turbo-select": ["src/react-turbo-select/index.tsx"]
+    },
+    "typeRoots": ["node_modules/@types", "src/react-turbo-select/index.d.ts"]
   },
-  "include": ["src", "src/components", "src/react-turbo-select"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

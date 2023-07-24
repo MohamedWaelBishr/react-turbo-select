@@ -1,28 +1,29 @@
 // DropdownMenu.tsx
-import React from "react";
-import { Option } from "../utils/types";
-import { CLASS_NAMES } from "../utils/classNames";
-import { getOptionClass } from "../utils/getOptionClass";
+import React from 'react'
+
+import { Option } from '../types/types'
+import { CLASS_NAMES } from '../utils/classNames'
+import { getOptionClass } from '../utils/getOptionClass'
 
 interface DropdownMenuProps {
-  menuRef: React.RefObject<any>;
-  isMultiple: boolean;
-  isLoading: boolean;
-  options: Option[];
-  optionStyles: React.CSSProperties;
-  handleOptionChange: (option: Option | null) => void;
-  handleScroll: (e: any) => void;
-  isMenuOpen: boolean;
-  noOptionsMessage?: any;
-  loadingMessage?: any;
-  defaultMenuIsScrollable: boolean;
-  menuHeight: number;
-  gapBetweenControls: number;
-  menuStyles: React.CSSProperties;
-  width: any;
-  selectedOptions: any;
-  inputValue: any;
-  mode?: "light" | "dark";
+  menuRef: React.RefObject<any>
+  isMultiple: boolean
+  isLoading: boolean
+  options: Option[]
+  optionStyles: React.CSSProperties
+  handleOptionChange: (option: Option | null) => void
+  handleScroll: (e: any) => void
+  isMenuOpen: boolean
+  noOptionsMessage?: any
+  loadingMessage?: any
+  defaultMenuIsScrollable: boolean
+  menuHeight: number
+  gapBetweenControls: number
+  menuStyles: React.CSSProperties
+  width: any
+  selectedOptions: any
+  inputValue: any
+  mode?: 'light' | 'dark'
 }
 
 export const DropdownMenu: React.FC<DropdownMenuProps> = ({
@@ -54,19 +55,19 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
         isMenuOpen
           ? {
               width: width + 12,
-              overflow: defaultMenuIsScrollable ? "scroll" : "hidden",
+              overflow: defaultMenuIsScrollable ? 'scroll' : 'hidden',
               height: menuHeight,
-              marginTop: gapBetweenControls || "unset",
-              backgroundColor: mode === "dark" ? "#333" : "#fff",
-              color: mode === "dark" ? "#fff" : "#333",
+              marginTop: gapBetweenControls || 'unset',
+              backgroundColor: mode === 'dark' ? '#333' : '#fff',
+              color: mode === 'dark' ? '#fff' : '#333',
               ...menuStyles,
             }
           : {
               width: width + 10,
               height: menuHeight,
-              marginTop: gapBetweenControls || "unset",
-              backgroundColor: mode === "dark" ? "#333" : "#fff",
-              color: mode === "dark" ? "#fff" : "#333",
+              marginTop: gapBetweenControls || 'unset',
+              backgroundColor: mode === 'dark' ? '#333' : '#fff',
+              color: mode === 'dark' ? '#fff' : '#333',
               ...menuStyles,
             }
       }
@@ -77,13 +78,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
         options.map((option, index) => (
           <div
             key={index}
-            className={getOptionClass(
-              option,
-              selectedOptions,
-              inputValue,
-              isMultiple,
-              mode
-            )}
+            className={getOptionClass(option, selectedOptions, inputValue, isMultiple, mode)}
             style={{
               ...optionStyles,
             }}
@@ -93,5 +88,5 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
           </div>
         ))}
     </div>
-  );
-};
+  )
+}

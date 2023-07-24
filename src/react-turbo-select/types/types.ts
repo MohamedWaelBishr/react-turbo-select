@@ -45,3 +45,6 @@ export interface TurboSelectProps {
   tagStyle?: React.CSSProperties;
   mode?: "light" | "dark";
 }
+
+declare const TurboSelect: React.FC<TurboSelectProps>;
+export default TurboSelect;

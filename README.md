@@ -80,9 +80,9 @@ To get started with Turbo Select, simply import the component into your project:
 Copy
 
 ```jsx
-import TurboSelect from "react-turbo-select";
+import { TurboSelect } from 'react-turbo-select'
 // import the style sheet of the library
-import "react-turbo-select/dist/style.css";
+import 'react-turbo-select/dist/style.css'
 ```
 
 ## 📖 Usage
@@ -92,17 +92,17 @@ Here's a quick example of how you can use Turbo Select in your React application
 Copy
 
 ```jsx
-import React from "react";
-import TurboSelect from "react-turbo-select";
+import React from 'react'
+import { TurboSelect } from 'react-turbo-select'
 // import the style sheet of the library
-import "react-turbo-select/dist/style.css";
+import 'react-turbo-select/dist/style.css'
 
 const options = [
-  { value: "1", label: "Option 1" },
-  { value: "2", label: "Option 2" },
-  { value: "3", label: "Option 3" },
+  { value: '1', label: 'Option 1' },
+  { value: '2', label: 'Option 2' },
+  { value: '3', label: 'Option 3' },
   // Add more options as needed
-];
+]
 
 const MyComponent = () => {
   // Your component logic here
@@ -112,8 +112,8 @@ const MyComponent = () => {
       <TurboSelect options={options} />
       {/* Add more components and logic */}
     </div>
-  );
-};
+  )
+}
 
-export default MyComponent;
+export default MyComponent
 ```

@@ -1,6 +1,6 @@
 {
   "name": "react-turbo-select",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "description": "Turbo Select is a flexible and feature-rich React component that provides a convenient dropdown select menu for your applications. Whether you need a simple single selection or a more complex multiple selection with tags, Turbo Select has got you covered. It offers various customization options, making it suitable for a wide range of use cases.",
   "license": "MIT",
   "author": "Mohamed Wael Bishr",
@@ -25,48 +25,46 @@
     "keywords",
     "wide range"
   ],
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "yarn  eslint",
+      "yarn  format"
+    ]
+  },
   "files": [
-    "dist",
-    "README.md",
-    "images"
+    "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/react-turbo-select.es.js",
+      "require": "./dist/react-turbo-select.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/style.css": "./dist/style.css",
+    "./dist/index.d.ts": "./dist/index.d.ts"
+  },
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "main": "./dist/react-turbo-select.umd.js",
+  "module": "./dist/react-turbo-select.es.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/MohamedWaelBishr/react-turbo-select.git"
   },
-  "type": "module",
-  "main": "./dist/react-turbo-select.umd.js",
-  "module": "./dist/react-turbo-select.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/react-turbo-select.es.js",
-      "require": "./dist/react-turbo-select.umd.js"
-    },
-    "./dist/*.css": {
-      "import": "./dist/*.css",
-      "require": "./dist/*.css"
-    },
-    "./dist/*.d.ts": {
-      "import": "./dist/*.d.ts",
-      "require": "./dist/*.d.ts"
-    },
-    "./dist/react-turbo-select/*.d.ts": {
-      "import": "./dist/react-turbo-select/*.d.ts",
-      "require": "./dist/react-turbo-select/*.d.ts"
-    }
-  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "type": "echo 'declare module \"react-turbo-select\";' > dist/index.d.ts && echo 'declare module \"react-turbo-select\";' > dist/react-turbo-select/index.d.ts",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "build": "tsc && vite build && npm run type",
+    "type": "echo 'import React from \"react\";\\nimport { TurboSelectProps } from \"./types/types\";\\nexport declare const TurboSelect: React.FC<TurboSelectProps>;\\ndeclare module \"react-turbo-select\"' > dist/index.d.ts",
+    "preview": "vite preview",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint --fix 'src/**/*.{jsx,ts,tsx}'",
+    "format": "prettier --write src//**/*.{ts,tsx,css} --config ./.prettierrc"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "react-turbo-select": "^1.0.9"
+    "react-turbo-select": "^1.1.1"
   },
   "devDependencies": {
     "@types/node": "^20.4.4",
@@ -75,14 +73,21 @@
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
     "@vitejs/plugin-react": "^4.0.1",
-    "eslint": "^8.44.0",
+    "eslint": "^8.45.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "prettier": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hooks": "^1.0.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.0",
-    "vite-plugin-dts": "^3.3.1"
+    "vite-plugin-dts": "^3.3.1",
+    "vite-plugin-linter": "^2.0.2",
+    "vite-tsconfig-paths": "^4.2.0"
   },
   "browserslist": {
     "production": [
@@ -109,7 +114,5 @@
     "parserOptions": {
       "sourceType": "module"
     }
-  },
-  "types": "./dist/index.d.ts",
-  "typings": "./dist/index.d.ts"
+  }
 }

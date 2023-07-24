@@ -1,1 +1,0 @@
-export declare const handleKeyDown: (event: KeyboardEvent, escapeCloseMenu: any, setInputValue: any, setSelectedOptions: any, setLocalOptions: any, options: any, handleMenuClose: any, isMenuOpen: any) => void;

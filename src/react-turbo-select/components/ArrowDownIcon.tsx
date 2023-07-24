@@ -1,5 +1,6 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { CLASS_NAMES } from "../utils/classNames";
 
 type ArrowDownIconProps = {

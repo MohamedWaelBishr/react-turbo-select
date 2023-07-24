@@ -1,6 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CLASS_NAMES } from "../utils/classNames";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { CLASS_NAMES } from "../utils/classNames";
 
 type removeIconProps = {
   setInputValue: any;
