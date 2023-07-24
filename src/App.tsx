@@ -57,7 +57,7 @@ function App() {
         // ]}
         optionsGroups={[
           {
-            groupName: '1',
+            groupName: 'First Group',
             groupValues: [
               { label: 'React', value: 'react' },
               { label: 'Vite', value: 'vite' },
@@ -66,7 +66,7 @@ function App() {
             ],
           },
           {
-            groupName: '2',
+            groupName: 'Second Group',
             groupValues: [
               { label: 'Khaled', value: 'khaled' },
               { label: 'Ali', value: 'ali' },
@@ -75,7 +75,7 @@ function App() {
             ],
           },
           {
-            groupName: '3',
+            groupName: 'Third Group',
             groupValues: [
               { label: 'Mahmoud', value: 'mahmoud' },
               { label: 'Nour', value: 'nour' },

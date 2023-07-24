@@ -99,9 +99,9 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
         optionsGroups?.map((optionGroup: OptionGroup, index) => (
           <div>
             {mode === 'light' ? (
-              <div {...OptionGroupLabelStyle}>Group : {optionGroup.groupName}</div>
+              <div {...OptionGroupLabelStyle}>{optionGroup.groupName}</div>
             ) : (
-              <div {...OptionGroupLabelStyleDark}>Group : {optionGroup.groupName}</div>
+              <div {...OptionGroupLabelStyleDark}>{optionGroup.groupName}</div>
             )}
             {optionGroup?.groupValues?.map((option: Option) => {
               return (

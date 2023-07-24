@@ -123,19 +123,42 @@ export default MyComponent
 import React from 'react'
 import { TurboSelect } from 'react-turbo-select'
 
-const options = [
-  { value: '1', label: 'Option 1' },
-  { value: '2', label: 'Option 2' },
-  { value: '3', label: 'Option 3' },
-  // Add more options as needed
-]
+const optionsGroups = {[
+          {
+            groupName: 'First Group',
+            groupValues: [
+              { label: 'React', value: 'react' },
+              { label: 'Vite', value: 'vite' },
+              { label: 'Ahmed', value: 'ahmed' },
+              { label: 'Mohamed', value: 'mohamed' },
+            ],
+          },
+          {
+            groupName: 'Second Group',
+            groupValues: [
+              { label: 'Khaled', value: 'khaled' },
+              { label: 'Ali', value: 'ali' },
+              { label: 'Maher', value: 'maher' },
+              { label: 'Moheb', value: 'moheb' },
+            ],
+          },
+          {
+            groupName: 'Third Group',
+            groupValues: [
+              { label: 'Mahmoud', value: 'mahmoud' },
+              { label: 'Nour', value: 'nour' },
+              { label: 'Salah', value: 'salah' },
+              { label: 'Ameer', value: 'ameer' },
+            ],
+          },
+        ]}
 
 const MyComponent = () => {
   // Your component logic here
   return (
     <div>
       <h1>My Awesome App</h1>
-      <TurboSelect options={options} />
+      <TurboSelect optionsGroups={optionsGroups} />
       {/* Add more components and logic */}
     </div>
   )
