@@ -76,6 +76,10 @@ Turbo Select accepts the following props:
 
 ---
 
+## 🎮 Demo
+
+## **check out our [live demo ↗](https://codesandbox.io/s/react-turbo-select-ht8gmh?file=/src/App.js) to see some more advanced examples of how to use my package in the real world.**
+
 ## 🎉 Getting Started
 
 To get started with Turbo Select, simply import the component into your project:
