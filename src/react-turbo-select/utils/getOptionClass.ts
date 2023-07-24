@@ -1,5 +1,5 @@
 import { Option } from '../types/types'
-import { CLASS_NAMES } from './classNames'
+import { optionStyle, selectedOptionStyle, selectedOptionDarkStyle } from './styles'
 
 export const getOptionClass = (
   option: Option,
@@ -11,15 +11,15 @@ export const getOptionClass = (
   if (isMultiple) {
     let selectedOptionsIds = selectedOptions.map((option: any) => option.value)
     if (selectedOptionsIds.includes(option.value)) {
-      return mode == 'dark' ? CLASS_NAMES.OPTION_SELECTED_DARK : CLASS_NAMES.OPTION_SELECTED
+      return mode == 'dark' ? selectedOptionDarkStyle : selectedOptionStyle
     } else {
-      return CLASS_NAMES.OPTION
+      return optionStyle
     }
   } else {
     if (inputValue === option.label) {
-      return mode == 'dark' ? CLASS_NAMES.OPTION_SELECTED_DARK : CLASS_NAMES.OPTION_SELECTED
+      return mode == 'dark' ? selectedOptionDarkStyle : selectedOptionStyle
     } else {
-      return CLASS_NAMES.OPTION
+      return optionStyle
     }
   }
 }

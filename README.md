@@ -1,8 +1,8 @@
-# Turbo Select 🚀
+# 🚀 ✴️ React Turbo Select ✴️ 🚀
 
-Turbo Select is a flexible and feature-rich React component that provides a convenient dropdown select menu for your applications. Whether you need a simple single selection or a more complex multiple selection with tags, Turbo Select has got you covered. It offers various customization options, making it suitable for a wide range of use cases.
+### **Turbo Select is a flexible and feature-rich React component that provides a convenient dropdown select menu for your applications. Whether you need a simple single selection or a more complex multiple selection with tags, Turbo Select has got you covered. It offers various customization options, making it suitable for a wide range of use cases.**
 
-## Preview
+## 🔍 Preview
 
 |    LIGHT MODE     |     DARK MODE     |
 | :---------------: | :---------------: |
@@ -12,7 +12,7 @@ Turbo Select is a flexible and feature-rich React component that provides a conv
 
 ---
 
-## ⚙️ Installation
+## 🛠️ Installation
 
 To install Turbo Select in your React project, you can use npm or yarn:
 
@@ -22,13 +22,11 @@ npm install react-turbo-select
 
 or
 
-Copy
-
 ```bash
 yarn add react-turbo-select
 ```
 
-## ⚙️ Props
+## ⚙️ Props and APIs
 
 Turbo Select accepts the following props:
 
@@ -54,6 +52,9 @@ Turbo Select accepts the following props:
 | `dropDownIcon`            | Custom icon to display as the dropdown indicator.                          |
 | `defaultMenuIsScrollable` | Enable scrolling in the dropdown menu by default.                          |
 | `options`                 | An array of `Option` objects (interface defined in the package).           |
+|                           | \* **if this provided it will override optionsGroups prop**                |
+| `optionsGroups`           | An array of `OptionGroup` objects (interface defined in the package).      |
+|                           | \* **this prop will be neglected in case of options prop existed**         |
 | `getContainerRef`         | Callback function to get the reference of the container element.           |
 | `getInputRef`             | Callback function to get the reference of the input element.               |
 | `getMenuRef`              | Callback function to get the reference of the dropdown menu element.       |
@@ -73,29 +74,54 @@ Turbo Select accepts the following props:
 | `tagStyle`                | Custom styles for the tags in multiple selection mode.                     |
 | `mode`                    | Color mode of the select component ("light" or "dark") (default: "light"). |
 
+---
+
 ## 🎉 Getting Started
 
 To get started with Turbo Select, simply import the component into your project:
 
-Copy
-
 ```jsx
 import { TurboSelect } from 'react-turbo-select'
-// import the style sheet of the library
-import 'react-turbo-select/dist/style.css'
 ```
 
 ## 📖 Usage
 
 Here's a quick example of how you can use Turbo Select in your React application:
 
-Copy
+### 📌 using it with **`options`** prop
 
 ```jsx
 import React from 'react'
 import { TurboSelect } from 'react-turbo-select'
-// import the style sheet of the library
-import 'react-turbo-select/dist/style.css'
+
+const options = [
+  { value: '1', label: 'Option 1' },
+  { value: '2', label: 'Option 2' },
+  { value: '3', label: 'Option 3' },
+  // Add more options as needed
+]
+
+const MyComponent = () => {
+  // Your component logic here
+  return (
+    <div>
+      <h1>My Awesome App</h1>
+      <TurboSelect options={options} />
+      {/* Add more components and logic */}
+    </div>
+  )
+}
+
+export default MyComponent
+```
+
+---
+
+### 📌 using it with **`optionsGroups`** prop
+
+```jsx
+import React from 'react'
+import { TurboSelect } from 'react-turbo-select'
 
 const options = [
   { value: '1', label: 'Option 1' },

@@ -9,7 +9,7 @@ function App() {
     <div
       style={{
         width: '100%',
-        height: '100vh',
+        height: '98vh',
         display: 'flex',
         // justifyContent: "center",
         alignItems: 'center',
@@ -28,10 +28,11 @@ function App() {
         // getMenuRef={(ref: any) => {
         //   console.log(ref.current);
         // }}
-
+        // mode="dark"
         // gapBetweenControls={30}
         // borderRadius={"large"}
         containerStyles={{ marginTop: '400px' }}
+        // tagStyle={{ backgroundColor: 'red' }}
         // onReachMaxScroll={() => {
         //   console.log("reach max scroll");
         // }}
@@ -40,19 +41,48 @@ function App() {
         // openMenuOnClick={false}
         // showTagsControls={false}
         // isRtl={true}
-        options={[
-          { label: 'React', value: 'react' },
-          { label: 'Vite', value: 'vite' },
-          { label: 'Ahmed', value: 'ahmed' },
-          { label: 'Mohamed', value: 'mohamed' },
-          { label: 'Khaled', value: 'khaled' },
-          { label: 'Ali', value: 'ali' },
-          { label: 'Maher', value: 'maher' },
-          { label: 'Moheb', value: 'moheb' },
-          { label: 'Mahmoud', value: 'mahmoud' },
-          { label: 'Nour', value: 'nour' },
-          { label: 'Salah', value: 'salah' },
-          { label: 'Ameer', value: 'ameer' },
+        // options={[
+        //   { label: 'React', value: 'react' },
+        //   { label: 'Vite', value: 'vite' },
+        //   { label: 'Ahmed', value: 'ahmed' },
+        //   { label: 'Mohamed', value: 'mohamed' },
+        //   { label: 'Khaled', value: 'khaled' },
+        //   { label: 'Ali', value: 'ali' },
+        //   { label: 'Maher', value: 'maher' },
+        //   { label: 'Moheb', value: 'moheb' },
+        //   { label: 'Mahmoud', value: 'mahmoud' },
+        //   { label: 'Nour', value: 'nour' },
+        //   { label: 'Salah', value: 'salah' },
+        //   { label: 'Ameer', value: 'ameer' },
+        // ]}
+        optionsGroups={[
+          {
+            groupName: '1',
+            groupValues: [
+              { label: 'React', value: 'react' },
+              { label: 'Vite', value: 'vite' },
+              { label: 'Ahmed', value: 'ahmed' },
+              { label: 'Mohamed', value: 'mohamed' },
+            ],
+          },
+          {
+            groupName: '2',
+            groupValues: [
+              { label: 'Khaled', value: 'khaled' },
+              { label: 'Ali', value: 'ali' },
+              { label: 'Maher', value: 'maher' },
+              { label: 'Moheb', value: 'moheb' },
+            ],
+          },
+          {
+            groupName: '3',
+            groupValues: [
+              { label: 'Mahmoud', value: 'mahmoud' },
+              { label: 'Nour', value: 'nour' },
+              { label: 'Salah', value: 'salah' },
+              { label: 'Ameer', value: 'ameer' },
+            ],
+          },
         ]}
       />
     </div>

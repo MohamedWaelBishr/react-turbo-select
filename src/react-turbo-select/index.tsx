@@ -1,4 +1,4 @@
-import './styles.css'
+import './style.css'
 
 import React, { LegacyRef, useEffect, useRef, useState } from 'react'
 
@@ -10,11 +10,12 @@ import {
   RemoveIcon,
   TagControls,
 } from './components'
-import { Option,TurboSelectProps } from './types/types'
-import { CLASS_NAMES } from './utils/classNames'
+import { Option, OptionGroup, TurboSelectProps } from './types/types'
 import { getBorderRadius } from './utils/getBorderRadius'
 import { handleKeyDown } from './utils/handleKeyDown'
 import { handleScroll } from './utils/handleScroll'
+
+import { controlsContainerStyle } from './utils/styles'
 
 export const TurboSelect: React.FC<TurboSelectProps> = ({
   isSearchable = true,
@@ -48,19 +49,24 @@ export const TurboSelect: React.FC<TurboSelectProps> = ({
   onChange,
   placeholder,
   width = 300,
-  height = 40,
+  height = 38,
   menuHeight = 250,
   iconFlicker = false,
   borderRadius = 'tiny',
   gapBetweenControls = 10,
   tagStyle,
   mode = 'light',
+  optionsGroups,
 }) => {
   const [selectedOptions, setSelectedOptions] = useState<Option[]>(
     defaultValue ? [defaultValue] : [],
   )
   const [inputValue, setInputValue] = useState<string>('')
-  const [localOptions, setLocalOptions] = useState<Option[]>(options)
+  const [localOptions, setLocalOptions] = useState<Option[] | undefined>(options)
+  const [localOptionsGroups, setLocalOptionsGroups] = useState<OptionGroup[] | undefined>(
+    optionsGroups,
+  )
+  const isGroups = !!optionsGroups?.length
   const [isMenuOpen, setMenuOpen] = useState<boolean>(menuOpen)
   const [defaultPlaceholder, setDefaultPlaceHolder] = useState<string>(
     placeholder ?? 'Select an option',
@@ -138,7 +144,7 @@ export const TurboSelect: React.FC<TurboSelectProps> = ({
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (isSearchable) {
       setLocalOptions(
-        options.filter((option) =>
+        options?.filter((option) =>
           option.label.toLowerCase().includes(event.target.value.toLowerCase()),
         ),
       )
@@ -195,15 +201,15 @@ export const TurboSelect: React.FC<TurboSelectProps> = ({
       onClick={() => (openMenuOnClick ? setMenuOpen(!isMenuOpen) : null)}
     >
       <div
+        {...controlsContainerStyle}
         ref={containerRef}
-        className={CLASS_NAMES.CONTROLS_CONTAINER}
         style={
           isMenuOpen
             ? {
                 borderRadius:
                   getBorderRadius(borderRadius) + 'px' + getBorderRadius(borderRadius) + 'px 0 0 ',
                 width: width + 10,
-                height: height,
+                height: height + 2,
                 backgroundColor: mode === 'dark' ? '#333' : '#fff',
                 color: mode === 'dark' ? '#fff' : '#333',
                 ...containerStyles,
@@ -211,7 +217,7 @@ export const TurboSelect: React.FC<TurboSelectProps> = ({
             : {
                 borderRadius: getBorderRadius(borderRadius),
                 width: width + 10,
-                height: height,
+                height: height + 2,
                 backgroundColor: mode === 'dark' ? '#333' : '#fff',
                 color: mode === 'dark' ? '#fff' : '#333',
                 ...containerStyles,
@@ -268,6 +274,7 @@ export const TurboSelect: React.FC<TurboSelectProps> = ({
           isMultiple={isMultiple}
           isLoading={isLoading}
           options={localOptions}
+          optionsGroups={localOptionsGroups}
           optionStyles={optionStyles}
           handleOptionChange={handleOptionChange}
           handleScroll={(e) => handleScroll(e, onReachMaxScroll)}
@@ -282,6 +289,7 @@ export const TurboSelect: React.FC<TurboSelectProps> = ({
           selectedOptions={selectedOptions}
           width={width}
           mode={mode}
+          isGroups={isGroups}
         />
       )}
     </div>

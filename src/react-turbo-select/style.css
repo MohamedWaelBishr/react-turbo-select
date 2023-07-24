@@ -1,0 +1,31 @@
+/* Styling for the scrollbar thumb and track */
+#react-turbo-select__menu::-webkit-scrollbar {
+    width: 4px;
+
+    /* Set the width of the scrollbar */
+}
+
+#react-turbo-select__menu::-webkit-scrollbar-thumb {
+    background-color: #cecece;
+    /* Color of the scrollbar thumb */
+    border-radius: 10px;
+    /* Optional: To give the scrollbar thumb some rounded corners */
+}
+
+#react-turbo-select__menu::-webkit-scrollbar-track {
+    background-color: #050505;
+    /* Background color of the scrollbar track */
+    border-radius: 20px;
+    background-color: transparent;
+
+}
+
+#react-turbo-select__menu::-webkit-scrollbar:horizontal {
+    height: 0;
+    width: 0;
+    display: none;
+}
+
+#react-turbo-select__menu::-webkit-scrollbar-thumb:horizontal {
+    display: none;
+}

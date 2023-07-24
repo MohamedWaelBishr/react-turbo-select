@@ -2,8 +2,8 @@
 import React from 'react'
 
 import { Option } from '../types/types'
-import { CLASS_NAMES } from '../utils/classNames'
 import { getBorderRadius } from '../utils/getBorderRadius'
+import { inputStyle } from '../utils/styles'
 
 interface InputFieldProps {
   inputRef: React.RefObject<any>
@@ -44,7 +44,7 @@ export const InputControl: React.FC<InputFieldProps> = ({
 }) => {
   return (
     <input
-      className={CLASS_NAMES.INPUT}
+      {...inputStyle}
       ref={inputRef}
       style={{
         backgroundColor: mode === 'dark' ? '#333' : '#fff',

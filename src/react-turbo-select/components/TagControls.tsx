@@ -1,17 +1,17 @@
 // TagControls.tsx
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react'
 
-import { CLASS_NAMES } from "../utils/classNames";
+import { multipleMenuStyle, removeTagIconStyle, tagsStyle } from '../utils/styles'
 
 interface TagControlsProps {
-  selectedOptions: any;
-  tagStyle: React.CSSProperties | undefined;
-  onOptionChange: any;
-  isMenuOpen: boolean;
-  width: any;
-  mode?: "light" | "dark";
+  selectedOptions: any
+  tagStyle: React.CSSProperties | undefined
+  onOptionChange: any
+  isMenuOpen: boolean
+  width: any
+  mode?: 'light' | 'dark'
 }
 
 export const TagControls: React.FC<TagControlsProps> = ({
@@ -24,7 +24,7 @@ export const TagControls: React.FC<TagControlsProps> = ({
 }) => {
   return (
     <div
-      className={CLASS_NAMES.MULTIPLE_MENU}
+      {...multipleMenuStyle}
       style={
         isMenuOpen
           ? {
@@ -38,23 +38,23 @@ export const TagControls: React.FC<TagControlsProps> = ({
       {selectedOptions.map((option: any, index: any) => (
         <div
           style={{
-            backgroundColor: mode === "dark" ? "#333" : "#fff",
-            color: mode === "dark" ? "#fff" : "#333",
+            backgroundColor: mode === 'dark' ? '#333' : '#fff',
+            color: mode === 'dark' ? '#fff' : '#333',
             ...tagStyle,
           }}
           key={index}
-          className={CLASS_NAMES.TAG}
+          {...tagsStyle}
         >
           {option.label}
           <FontAwesomeIcon
-            className={CLASS_NAMES.REMOVE_TAG_ICON}
+            {...removeTagIconStyle}
             icon={faXmark}
             onClick={() => {
-              onOptionChange(option);
+              onOptionChange(option)
             }}
           />
         </div>
       ))}
     </div>
-  );
-};
+  )
+}

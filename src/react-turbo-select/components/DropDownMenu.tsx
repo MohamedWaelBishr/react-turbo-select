@@ -1,15 +1,15 @@
 // DropdownMenu.tsx
 import React from 'react'
 
-import { Option } from '../types/types'
-import { CLASS_NAMES } from '../utils/classNames'
+import { Option, OptionGroup } from '../types/types'
 import { getOptionClass } from '../utils/getOptionClass'
+import { OptionGroupLabelStyle, OptionGroupLabelStyleDark, menuStyle } from '../utils/styles'
 
 interface DropdownMenuProps {
   menuRef: React.RefObject<any>
   isMultiple: boolean
   isLoading: boolean
-  options: Option[]
+  options?: Option[]
   optionStyles: React.CSSProperties
   handleOptionChange: (option: Option | null) => void
   handleScroll: (e: any) => void
@@ -24,6 +24,8 @@ interface DropdownMenuProps {
   selectedOptions: any
   inputValue: any
   mode?: 'light' | 'dark'
+  optionsGroups?: OptionGroup[] | undefined
+  isGroups: boolean
 }
 
 export const DropdownMenu: React.FC<DropdownMenuProps> = ({
@@ -45,11 +47,14 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
   selectedOptions,
   inputValue,
   mode,
+  optionsGroups,
+  isGroups,
 }) => {
   return (
     <div
       ref={menuRef}
-      className={CLASS_NAMES.MENU}
+      {...menuStyle}
+      id="react-turbo-select__menu"
       onScroll={handleScroll}
       style={
         isMenuOpen
@@ -73,18 +78,45 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
       }
     >
       {isLoading && <h1>{loadingMessage}</h1>}
-      {!isLoading && options.length === 0 && <h1>{noOptionsMessage}</h1>}
+      {!isLoading && options?.length === 0 && <h1>{noOptionsMessage}</h1>}
       {!isLoading &&
-        options.map((option, index) => (
+        !isGroups &&
+        options?.map((option, index) => (
           <div
             key={index}
-            className={getOptionClass(option, selectedOptions, inputValue, isMultiple, mode)}
+            {...getOptionClass(option, selectedOptions, inputValue, isMultiple, mode)}
             style={{
               ...optionStyles,
             }}
             onClick={() => handleOptionChange(option)}
           >
             {option.label}
+          </div>
+        ))}
+
+      {!isLoading &&
+        isGroups &&
+        optionsGroups?.map((optionGroup: OptionGroup, index) => (
+          <div>
+            {mode === 'light' ? (
+              <div {...OptionGroupLabelStyle}>Group : {optionGroup.groupName}</div>
+            ) : (
+              <div {...OptionGroupLabelStyleDark}>Group : {optionGroup.groupName}</div>
+            )}
+            {optionGroup?.groupValues?.map((option: Option) => {
+              return (
+                <div
+                  key={index}
+                  {...getOptionClass(option, selectedOptions, inputValue, isMultiple, mode)}
+                  style={{
+                    ...optionStyles,
+                  }}
+                  onClick={() => handleOptionChange(option)}
+                >
+                  {option.label}
+                </div>
+              )
+            })}
           </div>
         ))}
     </div>
