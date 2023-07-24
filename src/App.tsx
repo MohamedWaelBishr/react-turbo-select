@@ -1,9 +1,22 @@
 import "./App.css";
 import TurboSelect from "./react-turbo-select";
-
+// import TurboSelect from "react-turbo-select";
+// import TurboSelect from "react-turbo-select";
+// import "react-turbo-select/dist/style.css";
 function App() {
   return (
-    <>
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+        display: "flex",
+        // justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        background:
+          "linear-gradient(231deg, rgba(131,58,180,1) 26%, rgba(253,29,29,1) 65%, rgba(252,176,69,1) 100%)",
+      }}
+    >
       <TurboSelect
         isMultiple
         // iconFlicker
@@ -13,11 +26,11 @@ function App() {
         // getMenuRef={(ref: any) => {
         //   console.log(ref.current);
         // }}
-        // mode="dark"
+        mode="dark"
         width={500}
         // gapBetweenControls={30}
         // borderRadius={"large"}
-        // containerStyles={{ borderRadius: "10px" }}
+        containerStyles={{ marginTop: "400px" }}
         // onReachMaxScroll={() => {
         //   console.log("reach max scroll");
         // }}
@@ -41,7 +54,7 @@ function App() {
           { label: "Ameer", value: "ameer" },
         ]}
       />
-    </>
+    </div>
   );
 }
 

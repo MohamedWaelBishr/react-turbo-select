@@ -100,7 +100,7 @@
 
 .react-turbo-select__menu--multiple {
 
-    background-color: #ffffff;
+    background-color: transparent;
     display: flex;
     /* flex-direction: row; */
     flex-wrap: wrap;

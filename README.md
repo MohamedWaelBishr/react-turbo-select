@@ -2,6 +2,16 @@
 
 Turbo Select is a flexible and feature-rich React component that provides a convenient dropdown select menu for your applications. Whether you need a simple single selection or a more complex multiple selection with tags, Turbo Select has got you covered. It offers various customization options, making it suitable for a wide range of use cases.
 
+## Preview
+
+|    LIGHT MODE     |     DARK MODE     |
+| :---------------: | :---------------: |
+| ![](images/1.png) | ![](images/2.png) |
+| ![](images/3.png) | ![](images/4.png) |
+| ![](images/5.png) | ![](images/6.png) |
+
+---
+
 ## ⚙️ Installation
 
 To install Turbo Select in your React project, you can use npm or yarn:
@@ -70,7 +80,9 @@ To get started with Turbo Select, simply import the component into your project:
 Copy
 
 ```jsx
-import TurboSelect from "@your-namespace/turbo-select";
+import TurboSelect from "react-turbo-select";
+// import the style sheet of the library
+import "react-turbo-select/dist/style.css";
 ```
 
 ## 📖 Usage
@@ -82,6 +94,8 @@ Copy
 ```jsx
 import React from "react";
 import TurboSelect from "react-turbo-select";
+// import the style sheet of the library
+import "react-turbo-select/dist/style.css";
 
 const options = [
   { value: "1", label: "Option 1" },

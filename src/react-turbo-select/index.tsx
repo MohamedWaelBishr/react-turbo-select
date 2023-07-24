@@ -13,6 +13,7 @@ import { getBorderRadius } from "./utils/getBorderRadius";
 import { handleKeyDown } from "./utils/handleKeyDown";
 import { handleScroll } from "./utils/handleScroll";
 import { Option, TurboSelectProps } from "./utils/types";
+
 import "./styles.css";
 
 const TurboSelect: React.FC<TurboSelectProps> = ({

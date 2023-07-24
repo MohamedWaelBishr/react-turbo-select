@@ -1,6 +1,6 @@
 {
   "name": "react-turbo-select",
-  "version": "0.0.4",
+  "version": "1.0.9",
   "description": "Turbo Select is a flexible and feature-rich React component that provides a convenient dropdown select menu for your applications. Whether you need a simple single selection or a more complex multiple selection with tags, Turbo Select has got you covered. It offers various customization options, making it suitable for a wide range of use cases.",
   "license": "MIT",
   "author": "Mohamed Wael Bishr",
@@ -27,7 +27,8 @@
   ],
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "images"
   ],
   "repository": {
     "type": "git",
@@ -40,11 +41,24 @@
     ".": {
       "import": "./dist/react-turbo-select.es.js",
       "require": "./dist/react-turbo-select.umd.js"
+    },
+    "./dist/*.css": {
+      "import": "./dist/*.css",
+      "require": "./dist/*.css"
+    },
+    "./dist/*.d.ts": {
+      "import": "./dist/*.d.ts",
+      "require": "./dist/*.d.ts"
+    },
+    "./dist/react-turbo-select/*.d.ts": {
+      "import": "./dist/react-turbo-select/*.d.ts",
+      "require": "./dist/react-turbo-select/*.d.ts"
     }
   },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "type": "echo 'declare module \"react-turbo-select\";' > dist/index.d.ts && echo 'declare module \"react-turbo-select\";' > dist/react-turbo-select/index.d.ts",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -52,9 +66,10 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "react-turbo-select": "^0.0.3"
+    "react-turbo-select": "^1.0.9"
   },
   "devDependencies": {
+    "@types/node": "^20.4.4",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
@@ -95,5 +110,6 @@
       "sourceType": "module"
     }
   },
-  "types": "dist/react-turbo-select.d.ts"
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts"
 }
