@@ -1,6 +1,6 @@
 {
   "name": "react-turbo-select",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "🚀 Turbo Select, a cutting-edge and versatile React component, delivers an unparalleled dropdown select menu for your applications. Seamlessly cater to your needs, whether it's a seamless single selection or a dynamic, multi-faceted choice with tags. 💡 Empowered with a plethora of customization options, Turbo Select adapts effortlessly to a diverse array of use cases. Tailor it to perfection and unlock endless possibilities for your projects. 💻💪",
   "license": "MIT",
   "author": "Mohamed Wael Bishr",
@@ -115,7 +115,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "glamor": "^2.20.40",
-    "react-turbo-select": "^1.1.7"
+    "react-turbo-select": "^1.1.8"
   },
   "devDependencies": {
     "@types/node": "^20.4.4",
