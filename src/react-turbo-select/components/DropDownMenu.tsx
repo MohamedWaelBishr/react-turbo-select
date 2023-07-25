@@ -96,29 +96,31 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({
 
       {!isLoading &&
         isGroups &&
-        optionsGroups?.map((optionGroup: OptionGroup, index) => (
-          <div>
-            {mode === 'light' ? (
-              <div {...OptionGroupLabelStyle}>{optionGroup.groupName}</div>
-            ) : (
-              <div {...OptionGroupLabelStyleDark}>{optionGroup.groupName}</div>
-            )}
-            {optionGroup?.groupValues?.map((option: Option) => {
-              return (
-                <div
-                  key={index}
-                  {...getOptionClass(option, selectedOptions, inputValue, isMultiple, mode)}
-                  style={{
-                    ...optionStyles,
-                  }}
-                  onClick={() => handleOptionChange(option)}
-                >
-                  {option.label}
-                </div>
-              )
-            })}
-          </div>
-        ))}
+        optionsGroups?.map((optionGroup: OptionGroup, indexGroup) => {
+          return (
+            <div key={indexGroup}>
+              {mode === 'light' ? (
+                <div {...OptionGroupLabelStyle}>{optionGroup.groupName}</div>
+              ) : (
+                <div {...OptionGroupLabelStyleDark}>{optionGroup.groupName}</div>
+              )}
+              {optionGroup?.groupValues?.map((option: Option, indexOption) => {
+                return (
+                  <div
+                    key={indexGroup + '|' + indexOption}
+                    {...getOptionClass(option, selectedOptions, inputValue, isMultiple, mode)}
+                    style={{
+                      ...optionStyles,
+                    }}
+                    onClick={() => handleOptionChange(option)}
+                  >
+                    {option.label}
+                  </div>
+                )
+              })}
+            </div>
+          )
+        })}
     </div>
   )
 }

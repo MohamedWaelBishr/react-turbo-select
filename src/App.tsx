@@ -21,6 +21,7 @@ function App() {
       <TurboSelect
         width={800}
         isMultiple
+        isSearchable
         // iconFlicker
         // getContainerRef={(ref: any) => {
         //   console.log("Container Ref ", ref.current);

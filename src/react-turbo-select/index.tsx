@@ -110,7 +110,12 @@ export const TurboSelect: React.FC<TurboSelectProps> = ({
   }, [containerRef.current, inputRef.current, menuRef.current])
 
   const handleOptionChange = (option: Option | null) => {
-    setLocalOptions(options)
+    if (isGroups) {
+      setLocalOptionsGroups(optionsGroups)
+    } else {
+      setLocalOptions(options)
+    }
+
     if (option) {
       if (isMultiple) {
         let selectedOptionsIds = selectedOptions.map((selectedOption) => {
@@ -142,12 +147,38 @@ export const TurboSelect: React.FC<TurboSelectProps> = ({
   }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value === '') {
+      if (isGroups) {
+        setInputValue('')
+        setLocalOptionsGroups(optionsGroups)
+        return
+      } else {
+        setInputValue('')
+        setLocalOptions(options)
+        return
+      }
+    }
+
     if (isSearchable) {
-      setLocalOptions(
-        options?.filter((option) =>
-          option.label.toLowerCase().includes(event.target.value.toLowerCase()),
-        ),
-      )
+      if (isGroups) {
+        let newLocalGroupOptions = localOptionsGroups?.map((OG) => {
+          let filteredOptions = OG.groupValues.filter((option) =>
+            option.label.toLowerCase().includes(event.target.value.toLowerCase()),
+          )
+          let group: OptionGroup = {
+            groupName: OG.groupName,
+            groupValues: filteredOptions,
+          }
+          return group
+        })
+        setLocalOptionsGroups(newLocalGroupOptions)
+      } else {
+        setLocalOptions(
+          options?.filter((option) =>
+            option.label.toLowerCase().includes(event.target.value.toLowerCase()),
+          ),
+        )
+      }
     }
     setInputValue(event.target.value)
   }
@@ -158,6 +189,7 @@ export const TurboSelect: React.FC<TurboSelectProps> = ({
       if (isMultiple) {
         setInputValue('')
         setLocalOptions(options)
+        setLocalOptionsGroups(optionsGroups)
       }
       handleMenuClose()
     }

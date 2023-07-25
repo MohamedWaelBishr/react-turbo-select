@@ -1,4 +1,6 @@
-# 🚀 ✴️ React Turbo Select ✴️ 🚀
+# <center> 🚀 ✴️ React Turbo Select ✴️ 🚀</center>
+
+# <center> ![NPM Downloads](https://img.shields.io/npm/dw/react-turbo-select) ![npm](https://img.shields.io/npm/v/react-turbo-select) ![NPM License](https://img.shields.io/npm/l/react-turbo-select) ![npm collaborators](https://img.shields.io/npm/collaborators/react-turbo-select)</center>
 
 ### **Turbo Select is a flexible and feature-rich React component that provides a convenient dropdown select menu for your applications. Whether you need a simple single selection or a more complex multiple selection with tags, Turbo Select has got you covered. It offers various customization options, making it suitable for a wide range of use cases.**
 
